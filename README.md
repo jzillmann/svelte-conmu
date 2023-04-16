@@ -9,6 +9,8 @@ The only things the library provides are:
   - On menu selection
   - On `Escape` keypress
 
+Get a taste with the [demo](https://jzillmann.github.io/svelte-conmu).
+
 ## Getting started
 
 1. Install the library with `npm install --save-dev svelte-conmu`
