@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "deploy": "npm run build && cp -r dist/* ../docs/"
+    "deploy": "npm run build && rm -rf ../docs/assets &&  cp -r dist/* ../docs/"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.3",
