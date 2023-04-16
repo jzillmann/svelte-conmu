@@ -20,7 +20,7 @@ The only things the library provides are:
     import { ContextMenuWrapper } from "svelte-conmu";
    ```
 
-   - The `ContextMenuWrapper` will pass you the `options`. You will define those later on. It's up to you how to render those. This is only an example:
+   - The `ContextMenuWrapper` will pass you the `options`. You will define those later on. Here it's only about the look:
 
    ```Svelte
    <div id="context-menu">
@@ -78,7 +78,7 @@ The only things the library provides are:
 
 - It doesn't matter `where` since the positioning is `absolute`. Also this display (`show/not-show`) will be handled by the library.
 
-For full example see xxx.
+For full example see https://github.com/jzillmann/svelte-conmu/tree/main/example.
 
 ## Develop
 
@@ -86,4 +86,4 @@ For full example see xxx.
 
 ## Notes
 
-Inspired by [https://svelte.dev/repl/6fb90919e24942b2b47d9ad154386b0c?version=3.49.0].
+Inspired by https://svelte.dev/repl/6fb90919e24942b2b47d9ad154386b0c?version=3.49.0.

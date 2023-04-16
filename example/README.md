@@ -1,4 +1,4 @@
-# svelte-conmu Example Project
+# Example Project svelte-conmu
 
 Example for https://github.com/jzillmann/svelte-conmu.
 Most interesting files are:
