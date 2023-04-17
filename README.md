@@ -1,3 +1,9 @@
+<p>
+  <a href="https://www.npmjs.com/package/svelte-conmu">
+    <img src="https://img.shields.io/npm/v/svelte-conmu.svg" alt="npm version">
+  </a>
+</p>
+
 # svelte-conmu
 
 A Svelte Context Menu Library. Headless, the rendering/styling is completely in your hands.
