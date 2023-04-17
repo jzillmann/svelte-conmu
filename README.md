@@ -84,7 +84,16 @@ For full example see https://github.com/jzillmann/svelte-conmu/tree/main/example
 
 ## Develop
 
-- `xxx` to deploy the example as demo to github pages
+- `npm build` to build the package
+- `npm link` to make the package locally available (e.g. for the example project)
+
+## How to release
+
+- `npm publish`
+- tag with
+  - `git tag -a $releaseVersion -m "$releaseVersion release"`
+  - `git push --tags`
+- Increase version in `package.json`
 
 ## Notes
 
