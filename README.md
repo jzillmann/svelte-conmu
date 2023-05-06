@@ -98,7 +98,7 @@ For full example see https://github.com/jzillmann/svelte-conmu/tree/main/example
 
 You can do that by extending the definition through a entry in a `t.ds` file, e.g. in `vite-env.d.ts`:
 
-```
+```TypeScript
 // Extend svelte-conmu with highlight option
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as svelte_conmu from 'svelte-conmu';
@@ -110,7 +110,7 @@ declare module 'svelte-conmu' {
 }
 ```
 
-Now Type Script should give you type support when defining `ContextMenuOption`s and accessing them in your `ContextMenu.svelte`.
+Now Type Script should give you type support for `highlight` when defining `ContextMenuOption`s and accessing them in your `ContextMenu.svelte`.
 
 ## Develop
 
@@ -119,6 +119,7 @@ Now Type Script should give you type support when defining `ContextMenuOption`s 
 
 ## How to release
 
+- Deploy a new version of the demo: `cd example; npm run deploy`
 - `npm publish`
 - tag with
   - `git tag -a $releaseVersion -m "$releaseVersion release"`
