@@ -8,8 +8,12 @@
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       {#if option.label == "hr"}
         <hr />
-      {:else if option.onSelect}
-        <div class="context-menu-option" on:click={option.onSelect}>
+      {:else if option.action}
+        <div
+          class="context-menu-option"
+          class:context-menu-disabled={option.disabled && option.disabled()}
+          on:click={option.action}
+        >
           {option.label}
         </div>
       {:else}
@@ -37,9 +41,13 @@
   .context-menu-option {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    cursor: pointer;
     white-space: nowrap;
     text-align: left;
+  }
+
+  .context-menu-disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
   }
 
   .context-menu-info {
@@ -49,9 +57,10 @@
     max-width: 90px;
   }
 
-  .context-menu-option:hover {
+  .context-menu-option:hover:not(.context-menu-disabled) {
     color: #e2e3e4;
     background-color: #6a9ef8;
+    cursor: pointer;
   }
 
   hr {

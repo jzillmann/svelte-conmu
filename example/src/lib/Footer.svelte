@@ -6,12 +6,17 @@
   const contextMenuOptions: ContextMenuOption[] = [
     {
       label: "Switch Color",
-      onSelect: () => (colorSwitched = !colorSwitched),
+      action: () => (colorSwitched = !colorSwitched),
     },
     { label: "hr" },
     {
       label: "Log to console",
-      onSelect: () => console.log("logged to console"),
+      action: () => console.log("logged to console"),
+    },
+    {
+      label: "Close window",
+      action: () => window.close(),
+      disabled: () => colorSwitched == false,
     },
   ];
 </script>

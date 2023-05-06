@@ -4,12 +4,14 @@
 
   function wrapOptions(options: ContextMenuOption[]) {
     return options.map((o) => {
-      if (o.onSelect) {
+      if (o.action) {
         return {
           ...o,
-          onSelect: () => {
-            o.onSelect();
-            contextMenu.close();
+          action: () => {
+            if (!o.disabled || !o.disabled()) {
+              o.action();
+              contextMenu.close();
+            }
           },
         };
       }
@@ -19,7 +21,11 @@
 </script>
 
 {#if $contextMenu}
-  <ContextMenuContainer menuLeft={$contextMenu.x} menuTop={$contextMenu.y}>
+  <ContextMenuContainer
+    menuLeft={$contextMenu.x}
+    menuTop={$contextMenu.y}
+    close={contextMenu.close}
+  >
     <slot
       options={wrapOptions($contextMenu.options)}
       close={contextMenu.close}

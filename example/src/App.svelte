@@ -7,7 +7,7 @@
   const headlineOptions: ContextMenuOption[] = [
     {
       label: "See code",
-      onSelect: () =>
+      action: () =>
         window.open(
           new URL(
             "https://github.com/jzillmann/svelte-conmu/tree/main/example"
@@ -17,7 +17,7 @@
     },
     {
       label: "Project Page",
-      onSelect: () =>
+      action: () =>
         window.open(
           new URL("https://github.com/jzillmann/svelte-conmu"),
           "_blank"

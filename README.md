@@ -36,8 +36,8 @@ Get a taste with the [demo](https://jzillmann.github.io/svelte-conmu).
        <!-- svelte-ignore a11y-click-events-have-key-events -->
        {#if option.label == "hr"}
          <hr />
-       {:else if option.onSelect}
-         <div class="context-menu-option" on:click={option.onSelect}>
+       {:else if option.action}
+         <div class="context-menu-option" on:click={option.action}>
            {option.label}
          </div>
        {:else}
@@ -61,12 +61,16 @@ Get a taste with the [demo](https://jzillmann.github.io/svelte-conmu).
    const contextMenuOptions: ContextMenuOption[] = [
     {
       label: "Do A",
-      onSelect: doAFunction,
+      action: () => {
+        // do A..
+      },
     },
     { label: "hr" },
     {
       label: "Do B",
-      onSelect: doBFunction,
+      action: () => {
+        // do B...
+      },
     },
     ...
    ];

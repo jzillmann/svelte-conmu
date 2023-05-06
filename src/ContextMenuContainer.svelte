@@ -1,9 +1,9 @@
 <script lang="ts">
   import { clickOutside, contextmenuOutside } from "./context-menu";
-  import { contextMenu } from "./context-menu";
 
   export let menuLeft: number;
   export let menuTop: number;
+  export let close: () => void;
 
   let menuElement: HTMLElement;
 
@@ -21,7 +21,7 @@
 
 <svelte:window
   on:keydown={(e) => {
-    if (e.key === "Escape") contextMenu.close();
+    if (e.key === "Escape") close();
   }}
 />
 
@@ -30,9 +30,9 @@
   style="top:{menuTop}px; left:{menuLeft}px"
   bind:this={menuElement}
   use:clickOutside
-  on:clickedOutside={contextMenu.close}
+  on:clickedOutside={close}
   use:contextmenuOutside
-  on:contextMenuedOutside={contextMenu.close}
+  on:contextMenuedOutside={close}
 >
   <slot />
 </div>

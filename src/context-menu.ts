@@ -1,8 +1,9 @@
-import { writable } from "svelte/store";
+import { Readable, writable } from "svelte/store";
 
 export interface ContextMenuOption {
   label: string;
-  onSelect?: () => void;
+  action?: () => void;
+  disabled?: () => boolean;
 }
 
 export interface ContextMenu {
@@ -22,32 +23,39 @@ function createContextMenu(
   };
 }
 
-export const contextMenu = initializeStore(() => {
-  const { set, subscribe, update } = writable<ContextMenu>(null);
-  return {
-    open: (e: MouseEvent, options: ContextMenuOption[]) => {
-      set(createContextMenu(e, options));
-    },
-    close: () => {
-      set(null);
-    },
-    toggle: (e: MouseEvent, options: ContextMenuOption[]) => {
-      update((open) => {
-        if (open && open.x == e.clientX && open.y == e.clientY) {
-          return null;
-        }
-        contextMenu.open(e, options);
-        return createContextMenu(e, options);
-      });
-    },
-    subscribe,
-  };
-});
-
-/** Helper function to define and export stores in one step */
-function initializeStore<T>(func: () => T): T {
-  return func();
+export interface ContextMenuStore extends Readable<ContextMenu> {
+  open(e: MouseEvent, options: ContextMenuOption[]): void;
+  close(): void;
+  toggle(e: MouseEvent, options: ContextMenuOption[]): void;
 }
+
+function createContextMenuStore(): ContextMenuStore {
+  const { set, subscribe, update } = writable<ContextMenu>(null);
+
+  const open = (e: MouseEvent, options: ContextMenuOption[]) =>
+    set(createContextMenu(e, options));
+
+  const close = () => set(null);
+
+  const toggle = (e: MouseEvent, options: ContextMenuOption[]) => {
+    update((menu) => {
+      if (menu && menu.x == e.clientX && menu.y == e.clientY) {
+        return null;
+      }
+      open(e, options);
+      return createContextMenu(e, options);
+    });
+  };
+
+  return {
+    subscribe,
+    open,
+    close,
+    toggle,
+  };
+}
+
+export const contextMenu = createContextMenuStore();
 
 export function clickOutside(node: HTMLElement) {
   const handleClick = (event: UIEvent) => {

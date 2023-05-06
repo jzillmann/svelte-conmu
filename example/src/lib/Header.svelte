@@ -6,12 +6,12 @@
   const contextMenuOptions: ContextMenuOption[] = [
     {
       label: "Switch Color",
-      onSelect: () => (colorSwitched = !colorSwitched),
+      action: () => (colorSwitched = !colorSwitched),
     },
     { label: "hr" },
     {
       label: "Alert",
-      onSelect: () => alert("Context triggered alert!"),
+      action: () => alert("Context triggered alert!"),
     },
   ];
 </script>
