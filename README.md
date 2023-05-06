@@ -92,6 +92,26 @@ Get a taste with the [demo](https://jzillmann.github.io/svelte-conmu).
 
 For full example see https://github.com/jzillmann/svelte-conmu/tree/main/example.
 
+## FAQ
+
+### How to extend ContextMenuOption with custom data
+
+You can do that by extending the definition through a entry in a `t.ds` file, e.g. in `vite-env.d.ts`:
+
+```
+// Extend svelte-conmu with highlight option
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as svelte_conmu from 'svelte-conmu';
+
+declare module 'svelte-conmu' {
+	export interface ContextMenuOption {
+		highlight?: () => boolean;
+	}
+}
+```
+
+Now Type Script should give you type support when defining `ContextMenuOption`s and accessing them in your `ContextMenu.svelte`.
+
 ## Develop
 
 - `npm build` to build the package
